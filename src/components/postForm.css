@@ -3,30 +3,24 @@
 .post-form {
   overflow: hidden; 
   padding-right: .5em;
-  fieldset {
-    display: flex;
-    /* background-color: ; */
-    flex-direction: column;
-    label {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-      input{
-        text-align: center;
-          font-size: 1rem;
-          display: block;
-          margin: auto;
-          margin-top: .5rem;
-          width: 80%;
-          padding: .4rem;
-      }
-    }
-  }
-  button {
-    background-color: rgb(75, 75, 147);
-    width: 40%;
-    padding: .4rem;
+  
+}
+
+input{
+  text-align: center;
     font-size: 1rem;
-    border: solid .1rem;
-    border-radius: .4em
-  }
+    display: block;
+    margin: auto;
+    margin-top: .5rem;
+    width: 80%;
+    padding: .4rem;
+}
+
+button {
+  background-color: rgb(75, 75, 147);
+  width: 40%;
+  padding: .4rem;
+  font-size: 1rem;
+  border: solid .1rem;
+  border-radius: .4em
 }

@@ -3,6 +3,7 @@ import User from './User';
 // import Note from './Note';
 import PostForm from './PostForm';
 import PostsList from './PostsList';
+import ProfilePage from './ProfilePage';
 import fire, { db } from '../services/firebase';
 
 class Home extends Component {
@@ -166,11 +167,12 @@ class Home extends Component {
       <div className="col-md-6">
         <h1>pUpdates</h1>
         <PostForm currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
-        { this.state.name ? <User name={this.state.name} petName={this.state.petName}/> : null}
+        {/* { this.state.name ? <User name={this.state.name} petName={this.state.petName}/> : null} */}
         { this.state.teamMembersArr ? <PostsList allPosts={this.state.allPosts} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
           :
           null }
-
+        <ProfilePage/>
+        <User name={this.state.name} petName={this.state.petName}/>
         <button onClick={this.logout}>Log Out</button>
       </div>
     );

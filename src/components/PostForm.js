@@ -46,12 +46,16 @@ render(){
   return (
     <div><h2>## Post FORM ##</h2>
       <form className="post-form" onSubmit={(event) => this.handleSubmit(event)}>
-        <fieldset>
-          <label htmlFor="postText"> 
-            <input name="postText" value={this.state.postText} onChange={this.handleChange}/>
-          </label>
-        </fieldset>
-        <button type="submit">Submit</button>
+        {/* <fieldset>
+          <label htmlFor="postText">  */}
+        <li className="flex-inner">
+          <input name="postText" value={this.state.postText} onChange={this.handleChange}/>
+        </li>
+        {/* </label>
+        </fieldset> */}
+        <li className="flex-inner">
+          <button type="submit">Submit</button>
+        </li>
       </form>
     </div>
   );

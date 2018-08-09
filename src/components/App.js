@@ -40,13 +40,19 @@ export default class App extends Component {
 
   };
 
+  getAvatar = (avatarFile) => {
+    this.setState({
+      avatar: avatarFile
+    });
+  };
+
 
   render() {
 
    
     return (
       <div className="App">
-        { this.state.user ? <Home currentUserUid={this.state.user.uid}/> : <Login/> }
+        { this.state.user ? <Home currentUserUid={this.state.user.uid}/> : <Login getAvatar={this.getAvatar}/> }
       </div>
       
     );
