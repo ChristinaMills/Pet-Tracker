@@ -3,7 +3,6 @@ import User from './User';
 // import Note from './Note';
 import PostForm from './PostForm';
 import PostsList from './PostsList';
-import ProfilePage from './ProfilePage';
 import fire, { db } from '../services/firebase';
 
 class Home extends Component {
@@ -11,12 +10,16 @@ class Home extends Component {
     super(props);
 
     this.state = {
+      uid: '',
       name: '',
       petName: '',
       posts: [],
       allPosts: [],
-      teamMembersArr: [],
-      uid: ''
+      teamMembersArr: [], //uids
+      email:'',
+      teamMemberNames:[]
+      
+
     };
   }
 
@@ -43,7 +46,6 @@ class Home extends Component {
           this.setState({
             name: data.name,
             petName: data.petName,
-            avatar: data.avatar,
             avatarURL: data.avatarURL,
             email: data.email,
             uid: data.uid
@@ -81,20 +83,25 @@ class Home extends Component {
   
 
   getTeamMembers = () => {
-    // console.log('TEAM', this.state.petName);
     let teamMembersArr = [];
     let usersRef = db.collection('users');
+    let teamMemberNamesCopy = this.state.teamMemberNames.slice();
     let teamDocs = usersRef.where('petName', '==', this.state.petName).get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           let data = doc.data();
           let memberUid = data.uid;
-          teamMembersArr[memberUid] ? console.log('its already in there ') : teamMembersArr.push(memberUid);//don't mutate this if possible!
+          let memberName = data.name;
+          let memberEmail = data.email;
+          teamMemberNamesCopy[memberName] ? console.log('member name already in array') : teamMemberNamesCopy.push(memberName);
+          teamMembersArr[memberUid] ? console.log('member already in array') : teamMembersArr.push(memberUid);//don't mutate this if possible!
         });
       })
       .then(() => {
         this.setState({
-          teamMembersArr
+          teamMembersArr,
+          teamMemberNames: teamMemberNamesCopy
+
         });
       })
       .then(() => {
@@ -131,8 +138,11 @@ class Home extends Component {
               // let myPosts = this.state.allPosts.slice()
               // console.log('my posts are', myPosts);
               // myPosts.push(obj);
+              
               this.setState({
-                allPosts: [...this.state.allPosts, obj]
+                allPosts: [...this.state.allPosts, obj],
+               
+                
               });
             }
             // let newPostArr = this.state.allPosts.filter((post, i) => {
@@ -161,7 +171,7 @@ class Home extends Component {
 
   render() {
   
-
+    console.log('team memebers arr', this.teamMembersArr);
     return (
       <div className="col-md-6">
         <h1>pUpdates</h1>
@@ -171,8 +181,7 @@ class Home extends Component {
         { this.state.teamMembersArr ? <PostsList allPosts={this.state.allPosts} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
           :
           null }
-        <ProfilePage/>
-        { this.state.avatar ? <User name={this.state.name} petName={this.state.petName} avatar={this.state.avatar} avatarURL={this.state.avatarURL}/>
+        { this.state.avatarURL ? <User name={this.state.name} petName={this.state.petName} avatarURL={this.state.avatarURL} teamMembers={this.state.teamMembersArr} email={this.state.email} />
           :
           null
         }

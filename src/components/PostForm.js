@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { db } from '../services/firebase';
-import fire from '../services/firebase';
 import './postForm.css';
 
 export default class PostForm extends Component {

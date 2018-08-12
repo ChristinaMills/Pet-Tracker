@@ -9,7 +9,7 @@ export default class App extends Component {
     super();
     
     this.state = {
-      avatar: ''
+     
     };
 
     this.authListener = this.authListener.bind(this);
@@ -32,12 +32,12 @@ export default class App extends Component {
   }
 
 
-  getAvatar = (avatarFile) => {
-    console.log('get avatra being called');
-    this.setState({
-      avatar: avatarFile
-    });
-  };
+  // getAvatar = (avatarFile) => {
+  //   console.log('get avatra being called');
+  //   this.setState({
+  //     avatar: avatarFile
+  //   });
+  // };
 
 
   render() {
