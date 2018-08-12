@@ -42,22 +42,17 @@ class Home extends Component {
           let data = doc.data();
           this.setState({
             name: data.name,
-            petName: data.petName
+            petName: data.petName,
+            avatar: data.avatar,
+            avatarURL: data.avatarURL,
+            email: data.email,
+            uid: data.uid
           });
           this.getTeamMembers();
         });
       });
   };
 
-
-  //not active
-  loadAllPostsFromFB = () => {
-    db.collection('posts').get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        console.log(doc.id, ' => ', doc.data());
-      });
-    });
-  };
 
 
 
@@ -149,6 +144,8 @@ class Home extends Component {
     });
   };
 
+
+  //? used
   filterPosts = (allPosts) => {
     let postIdArr = [];
     allPosts.forEach((post) => {
@@ -163,16 +160,22 @@ class Home extends Component {
   };
 
   render() {
+  
+
     return (
       <div className="col-md-6">
         <h1>pUpdates</h1>
+        <img src={this.props.avatar}/>
         <PostForm currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
         {/* { this.state.name ? <User name={this.state.name} petName={this.state.petName}/> : null} */}
         { this.state.teamMembersArr ? <PostsList allPosts={this.state.allPosts} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
           :
           null }
         <ProfilePage/>
-        <User name={this.state.name} petName={this.state.petName}/>
+        { this.state.avatar ? <User name={this.state.name} petName={this.state.petName} avatar={this.state.avatar} avatarURL={this.state.avatarURL}/>
+          :
+          null
+        }
         <button onClick={this.logout}>Log Out</button>
       </div>
     );

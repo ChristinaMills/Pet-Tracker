@@ -42,7 +42,7 @@ signUp = (e) => {
         name: this.state.name,
         petName: this.state.petName,
         avatar: this.state.avatar,
-        // avatarURL: this.state.avatarURL
+        avatarURL: this.state.avatarURL
       });
     })
     .catch((error) => {console.log('Error adding document', error);});
@@ -69,7 +69,7 @@ handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
       .then(url => this.setState({  avatarURL: url  }))
 
       .then(() => {
-        this.props.getAvatar();
+        this.props.getAvatar(this.state.avatarURL);
       });
   };
 

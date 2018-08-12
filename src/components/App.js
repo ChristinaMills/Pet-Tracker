@@ -8,7 +8,9 @@ export default class App extends Component {
   constructor() {
     super();
     
-    this.state = {};
+    this.state = {
+      avatar: ''
+    };
 
     this.authListener = this.authListener.bind(this);
   }
@@ -29,18 +31,9 @@ export default class App extends Component {
     });
   }
 
-  getUserInfo = (userInfo) => {
-    this.setState({
-
-      userName: userInfo.userName,
-      petName: userInfo.petName,
-      email:  userInfo.email
-
-    });
-
-  };
 
   getAvatar = (avatarFile) => {
+    console.log('get avatra being called');
     this.setState({
       avatar: avatarFile
     });
@@ -48,11 +41,9 @@ export default class App extends Component {
 
 
   render() {
-
-   
     return (
       <div className="App">
-        { this.state.user ? <Home currentUserUid={this.state.user.uid}/> : <Login getAvatar={this.getAvatar}/> }
+        { this.state.user ? <Home currentUserUid={this.state.user.uid} avatar={this.state.avatar}/> : <Login getAvatar={this.getAvatar}/> }
       </div>
       
     );
