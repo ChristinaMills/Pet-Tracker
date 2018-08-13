@@ -1,26 +1,48 @@
 /* @import '../styles/variables.css'; */
 
+#post-form-container {
+  display:flex;
+  align-items: center;
+  font-size: 2rem;
+  height: 5em;
+
+}
+
 .post-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   overflow: hidden; 
   padding-right: .5em;
-  
+  display: inline;
 }
 
-input{
-  text-align: center;
+/* .flex-child {
+  display: inline;
+} */
+
+#profile-photo {
+  display: inline;
+  inline-size: 3.5em;
+  margin: 0;
+  padding: 0;
+}
+
+.post-text {
+    text-align: center;
+    height: 3.5em;
     font-size: 1rem;
-    display: block;
-    margin: auto;
-    margin-top: .5rem;
-    width: 80%;
+    margin: .5em;
     padding: .4rem;
+    border: 1px solid red;
 }
 
-button {
-  background-color: rgb(75, 75, 147);
-  width: 40%;
-  padding: .4rem;
-  font-size: 1rem;
-  border: solid .1rem;
-  border-radius: .4em
+.post-button {
+  background-color: white;
+  width: 4.5em;
+  height: 4.5em;
+  font-size: .7rem;
+  border: solid .1rem rgb(205, 205, 244);
+  border-radius: .4em;
+  margin-bottom: 0.8em;
 }

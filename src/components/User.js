@@ -5,18 +5,17 @@ export default class User extends Component {
 
 
   render() {
-    const { name, petName, avatarURL, email, teamMembers } = this.props;
+    const { name, petName, avatarURL, email, teamMemberNames } = this.props;
 
     return (
       <div className="user-border">
         {/* <h1>## User Component ## </h1> */}
         <figure className="user_info">
-          <h3>Name: {name}</h3>
-          <h3>Pet Name Group: {petName}</h3>
-          <h3> Team Members: {teamMembers}</h3>
-          <h3>e-mail: {email}</h3>
-          <h3><img className="profile-photo" src={avatarURL}/></h3>
-
+          <p><img className="profile-photo" src={avatarURL}/></p>
+          <p className="userInfoField">Name: {name}</p>
+          <p className="userInfoField">Pet Name Group: {petName}</p>
+          <p className="userInfoField"> Team Members: {teamMemberNames}</p>
+          <p className="userInfoField">e-mail: {email}</p>
         </figure>
       </div>
 

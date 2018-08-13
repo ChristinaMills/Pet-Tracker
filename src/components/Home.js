@@ -15,10 +15,10 @@ class Home extends Component {
       petName: '',
       posts: [],
       allPosts: [],
-      teamMembersArr: [], //uids
+      teamMembersArr: [], //of uids
       email:'',
-      teamMemberNames:[]
-      
+      teamMemberNames:[],
+      avatarURL: ''
 
     };
   }
@@ -93,6 +93,7 @@ class Home extends Component {
           let memberUid = data.uid;
           let memberName = data.name;
           let memberEmail = data.email;
+          console.log(memberName);
           teamMemberNamesCopy[memberName] ? console.log('member name already in array') : teamMemberNamesCopy.push(memberName);
           teamMembersArr[memberUid] ? console.log('member already in array') : teamMembersArr.push(memberUid);//don't mutate this if possible!
         });
@@ -100,7 +101,7 @@ class Home extends Component {
       .then(() => {
         this.setState({
           teamMembersArr,
-          teamMemberNames: teamMemberNamesCopy
+          teamMemberNames: teamMemberNamesCopy.join(', ')
 
         });
       })
@@ -135,20 +136,11 @@ class Home extends Component {
               id: doc.id
             };
             if(!this.containsObject(obj, this.state.allPosts)) {
-              // let myPosts = this.state.allPosts.slice()
-              // console.log('my posts are', myPosts);
-              // myPosts.push(obj);
-              
+             
               this.setState({
-                allPosts: [...this.state.allPosts, obj],
-               
-                
+                allPosts: [...this.state.allPosts, obj] 
               });
             }
-            // let newPostArr = this.state.allPosts.filter((post, i) => {
-            //   return post.id !== doc.id && i < this.state.allPosts.length;
-            // });
-
           });
         });
     });
@@ -171,20 +163,23 @@ class Home extends Component {
 
   render() {
   
-    console.log('team memebers arr', this.teamMembersArr);
+    console.log('team members arr', this.teamMembersArr);
     return (
       <div className="col-md-6">
-        <h1>pUpdates</h1>
-        <img src={this.props.avatar}/>
-        <PostForm currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
-        {/* { this.state.name ? <User name={this.state.name} petName={this.state.petName}/> : null} */}
+        <h3>pUpdates</h3>
+
+        {/* { this.state.avatarURL ? <User name={this.state.name} petName={this.state.petName} avatarURL={this.state.avatarURL} teamMemberNames={this.state.teamMemberNames} email={this.state.email} />
+          :
+          null
+        } */}
+        {/* <img src={this.props.avatar}/> */}
+
+        <PostForm avatarURL={this.state.avatarURL} currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
+
         { this.state.teamMembersArr ? <PostsList allPosts={this.state.allPosts} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
           :
           null }
-        { this.state.avatarURL ? <User name={this.state.name} petName={this.state.petName} avatarURL={this.state.avatarURL} teamMembers={this.state.teamMembersArr} email={this.state.email} />
-          :
-          null
-        }
+          
         <button onClick={this.logout}>Log Out</button>
       </div>
     );

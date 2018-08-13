@@ -1,8 +1,23 @@
+.user-border {
+  border: solid blue;
+  font-size: 16px;
+  width: 6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .profile-photo {
-  width: 5em;
+  width: 4em;
   height: auto
 }
 
-.user-border {
-  border: solid blue;
+
+.userInfoField {
+  font-size: 10px;
+  line-height: 1em;
+}
+
+li {
+  text-decoration: none;
 }

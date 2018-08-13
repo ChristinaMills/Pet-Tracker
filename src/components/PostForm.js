@@ -41,21 +41,15 @@ handleChange = ({ target }) => {
 };
 
 render(){
-
   return (
-    <div><h2>## Post FORM ##</h2>
+    <div id="post-form-container">
+      <img id="profile-photo" src={this.props.avatarURL}/>
       <form className="post-form" onSubmit={(event) => this.handleSubmit(event)}>
-        {/* <fieldset>
-          <label htmlFor="postText">  */}
-        <li className="flex-inner">
-          <input name="postText" value={this.state.postText} onChange={this.handleChange}/>
-        </li>
-        {/* </label>
-        </fieldset> */}
-        <li className="flex-inner">
-          <button type="submit">Submit</button>
-        </li>
+        <label htmlFor="postText"> 
+          <textarea className="post-text" name="postText" value={this.state.postText} onChange={this.handleChange}/>
+        </label>
       </form>
+      <button className="post-button" type="submit">**</button>
     </div>
   );
 }
