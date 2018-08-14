@@ -4,22 +4,17 @@
   display:flex;
   align-items: center;
   font-size: 2rem;
-  height: 5em;
-
+  height: auto;
+  border: solid 1px rgb(205, 205, 244);
+  padding: .2em;
 }
 
 .post-form {
   display: flex;
   flex-direction: row;
-  align-items: center;
   overflow: hidden; 
-  padding-right: .5em;
   display: inline;
 }
-
-/* .flex-child {
-  display: inline;
-} */
 
 #profile-photo {
   display: inline;
@@ -31,18 +26,19 @@
 .post-text {
     text-align: center;
     height: 3.5em;
+    width: 10em;
     font-size: 1rem;
     margin: .5em;
     padding: .4rem;
-    border: 1px solid red;
+    border: 1px solid rgb(205, 205, 244);
 }
 
 .post-button {
   background-color: white;
-  width: 4.5em;
-  height: 4.5em;
+  width: 3.5em;
+  height: 3.5em;
   font-size: .7rem;
   border: solid .1rem rgb(205, 205, 244);
   border-radius: .4em;
-  margin-bottom: 0.8em;
+  margin: .3em;
 }

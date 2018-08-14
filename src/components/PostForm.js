@@ -16,10 +16,12 @@ export default class PostForm extends Component {
   addPostToFB() {
     db.collection('posts').add({
       name: this.props.currentUserName,
+      avatarURL: this.props.avatarURL,
       petName: this.props.petName,
       uid: this.props.uid,
       postText: this.state.postText,
-      time: new Date().toLocaleDateString(),
+      time: new Date().toLocaleDateString()
+      
     })
       .then(this.setState({
         postText: '',
@@ -28,6 +30,7 @@ export default class PostForm extends Component {
       .catch(function(error) {
         console.error('Error adding document: ', error);
       });
+    console.log(this.props.avatarURL);
   }
 
 
@@ -41,15 +44,16 @@ handleChange = ({ target }) => {
 };
 
 render(){
+
   return (
     <div id="post-form-container">
       <img id="profile-photo" src={this.props.avatarURL}/>
-      <form className="post-form" onSubmit={(event) => this.handleSubmit(event)}>
+      <form className="post-form" id="form" onSubmit={(event) => this.handleSubmit(event)}>
         <label htmlFor="postText"> 
           <textarea className="post-text" name="postText" value={this.state.postText} onChange={this.handleChange}/>
         </label>
       </form>
-      <button className="post-button" type="submit">**</button>
+      <button className="post-button" type="submit" form="form">+</button>
     </div>
   );
 }

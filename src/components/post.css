@@ -1,6 +1,17 @@
 .post-container {
-  width: 70%;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
   background-color: lightblue;
+  margin-bottom: .5em;
 }
 
+.profile-photo {
+  width: 3.5em;
+  height: 3.5em;
+  /* display: inline;
+  inline-size: 3.5em;
+  margin: 0;
+  padding: 0; */
+}
 

@@ -163,7 +163,6 @@ class Home extends Component {
 
   render() {
   
-    console.log('team members arr', this.teamMembersArr);
     return (
       <div className="col-md-6">
         <h3>pUpdates</h3>
@@ -174,11 +173,11 @@ class Home extends Component {
         } */}
         {/* <img src={this.props.avatar}/> */}
 
-        <PostForm avatarURL={this.state.avatarURL} currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
-
-        { this.state.teamMembersArr ? <PostsList allPosts={this.state.allPosts} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
+        { this.state.avatarURL ? <PostForm avatarURL={this.state.avatarURL} currentUserName={this.state.name} uid={this.state.uid} petName={this.state.petName}/>
           :
           null }
+
+        <PostsList allPosts={this.state.allPosts} avatarURL={this.state.avatarURL} currentUserUid={this.props.currentUserUid} currentUserName={this.state.name} teamMembers={this.state.teamMembersArr}/>
           
         <button onClick={this.logout}>Log Out</button>
       </div>

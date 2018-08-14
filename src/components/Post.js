@@ -16,19 +16,19 @@ export default class Post extends Component {
 
 
   render(){
-    const text = this.props.postText;
-    const user = this.props.currentUserName;
-    const time = this.props.time;
+
+    const { time, currentUserName, postText, avatarURL } = this.props;
 
     return (
-      <div>
+      <li>
         <div className='post-container'>
-          <h4 className='user-name'>User name:{user}</h4>
-          <a className='post-text'>{text}</a>
-          <a className='time'>{time}</a>
+          <img className="profile-photo" src={avatarURL}/>
+          <p className='user-name'>{currentUserName}</p>
+          <p className='post-text'>{postText}</p>
+          <p className='time'>{time}</p>
         </div>
 
-      </div>
+      </li>
     );
   }
 }
